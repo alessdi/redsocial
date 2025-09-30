@@ -1,0 +1,297 @@
+/* --- VARIABLES GLOBALES Y ESTILOS DEL BODY --- */
+:root {
+    --color-fondo: #f0f2f5;
+    --color-blanco: #FFFFFF;
+    --color-texto-principal: #050505;
+    --color-texto-secundario: #65676B;
+    --borde-suave: 1px solid #ddd;
+    --sombra-tarjeta: 0 1px 2px rgba(0, 0, 0, 0.1);
+    --radio-borde: 8px;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--color-fondo); 
+    color: var(--color-texto-principal);
+    line-height: 1.4; 
+}
+
+/* --- COMPONENTES REUTILIZABLES --- */
+.tarjeta {
+    background-color: var(--color-blanco);
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-tarjeta);
+    margin-bottom: 20px;
+    padding: 12px 16px;
+}
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+}
+.flex-centro {
+    display: flex;
+    align-items: center;
+}
+.boton-interaccion {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 6px;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.15s ease;
+}
+.boton-interaccion:hover {
+    background-color: var(--color-fondo);
+}
+
+/* --- MAQUETACIÓN PRINCIPAL --- */
+.main-header {
+    background-color: var(--color-blanco);
+    padding: 6px 20px;
+    border-bottom: var(--borde-suave);
+    box-shadow: var(--sombra-tarjeta);
+    position: sticky; top: 0; z-index: 100;
+}
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 32px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.feed {
+    width: 100%;
+    max-width: 1020px;
+}
+.chat-area {
+    width: 360px;
+    min-width: 360px;
+    position: sticky; top: 80px;
+    height: calc(100vh - 100px);
+    padding-left: 24px;
+}
+
+/* --- ELEMENTOS ESPECÍFICOS --- */
+.profile-container {
+    margin-left: auto;
+}
+.profile-container img {
+    height: 40px; width: 40px; border-radius: 50%; object-fit: cover;
+}
+.create-post-input {
+    flex-grow: 1;
+    background-color: var(--color-fondo);
+    border-radius: 20px;
+    padding: 12px 16px;
+    color: var(--color-texto-secundario);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    font-size: 1.05rem;
+}
+.create-post-input:hover { background-color: #e4e6e9; }
+.post-author-info { flex-grow: 1; }
+.post-author { font-weight: 600; display: block; }
+.post-timestamp { font-size: 0.8rem; color: var(--color-texto-secundario); }
+.post-options { font-weight: bold; color: var(--color-texto-secundario); cursor: pointer; padding: 8px; }
+.post-text { margin: 0 0 16px 0; }
+.post-image { width: 100%; height: auto; display: block; }
+.post-interactions {
+    display: flex;
+    justify-content: space-around;
+    padding: 6px 8px;
+    color: #606770;
+    border-top: 1px solid #E4E6EB;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.contacts-title {
+    color: var(--color-texto-secundario);
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 10px 10px 5px 8px;
+}
+.contact-list { list-style: none; padding: 0; margin: 0; }
+.contact-item { padding: 12px 8px; border-radius: 8px; }
+.contact-item .avatar {
+    width: 54px;
+    height: 54px;
+    margin-right: 16px;
+}
+.contact-name {
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.comment-section {
+    padding: 0 16px 12px 16px;
+    border-top: 1px solid #E4E6EB;
+    margin-top: 12px;
+}
+.comment {
+    display: flex;
+    margin-top: 12px;
+}
+.comment-avatar {
+    width: 32px;
+    height: 32px;
+}
+.comment-content {
+    background-color: var(--color-fondo);
+    border-radius: 18px;
+    padding: 8px 12px;
+}
+.comment-author {
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: block;
+}
+.comment-text {
+    margin: 0;
+    font-size: 0.9rem;
+}
+.comment-input-area {
+    margin-top: 12px;
+}
+.comment-input {
+    flex-grow: 1;
+    background-color: var(--color-fondo);
+    border: none;
+    border-radius: 18px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+.comment-input:focus {
+    outline: none;
+}
+
+/* --- ESTILOS PARA EL ICONO DE CHAT FLOTANTE --- */
+.floating-chat-icon {
+    position: fixed; 
+    bottom: 25px;    
+    right: 25px;    
+    width: 60px;
+    height: 60px;
+    background-color: #0084FF; 
+    color: white;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000; 
+    transition: transform 0.2s ease;
+}
+
+.floating-chat-icon:hover {
+    transform: scale(1.1); 
+}
+
+
+/* Contenedor de la foto de perfil (columna 1) */
+.profile-sidebar {
+    flex: 0 0 300px; 
+    margin-right: 24px;
+}
+
+.profile-pic-card img {
+    width: 100%;
+    border-radius: var(--radio-borde);
+}
+
+/* Contenedor de la biografía (columna 2) */
+.profile-content {
+    flex-grow: 1; 
+}
+
+.profile-content h1 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.profile-subtitle {
+    color: var(--color-texto-secundario);
+    margin-top: 0;
+    font-weight: 500;
+}
+
+.profile-section-title {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-top: 24px;
+}
+
+/* --- REGLA PARA PANTALLAS PEQUEÑAS (RESPONSIVE) --- */
+@media (max-width: 992px) {
+    
+    .chat-area {
+        display: none; 
+    }
+    .main-content {
+        flex-direction: column; 
+        align-items: center; 
+    }
+    .profile-sidebar {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 500px; /* Limitamos el ancho de la foto */
+    }
+    .profile-content {
+        width: 100%;
+        max-width: 500px; /* Limitamos el ancho de la bio */
+    }
+}
+
+/* ==== FIN: ESTILOS DE LA PÁGINA DE PERFIL ==== */
+
+
+/* --- ESTILOS PARA EL PIE DE PÁGINA --- */
+.main-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px; 
+    background-color: #FFFFFF;
+    color: var(--color-texto-secundario);
+    border-top: var(--borde-suave);
+    font-size: 0.9rem;
+}
+
+.main-footer p {
+    margin: 0;
+}
+
+
+
+
+/* Para pantallas de 992px de ancho o menos (tablets y móviles) */
+@media (max-width: 992px) {
+
+    /* 1. Ocultamos la barra de chat */
+    .chat-area {
+        display: none;
+    }
+
+    /* 2. Hacemos que el feed ocupe más espacio */
+    .feed, .profile-content {
+        max-width: 100%; /* El feed ahora puede ocupar todo el ancho */
+        margin: 0;
+    }
+    
+    .profile-sidebar {
+        margin-right: 0;
+    }
+
+    /* 3. Ajustamos el contenedor principal */
+    .main-content {
+        padding: 20px 15px; /* Reducimos el espaciado en los lados */
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
